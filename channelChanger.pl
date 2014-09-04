@@ -6,7 +6,9 @@ use Getopt::Std;
 
 # make sure to set the remote_name string to
 # the corresponding remote in /etc/lircd.conf
-$remote_name = "directtv";
+$remote_name = "blaster";
+
+$key_prefix = "0_82_KEY_";
 
 use constant false => 0;
 use constant true  => 1;
@@ -17,7 +19,7 @@ my %options = ();
 getopts( "dh", \%options );
 
 if ( $options{h} ) {
-    print "usage: change-channel-lirc-v2.pl [-d] [-h] channum\n\n";
+    print "usage: channelChanger.pl [-d] [-h] channum\n\n";
     print "Parameter              Meaning\n";
     print "-d                     enable debug mode\n";
     print "-h                     help (this screen)\n";
@@ -45,6 +47,6 @@ system ("irsend SEND_ONCE $remote_name select");
 sub change_channel {
         my($channel_digit) = @_;
         if ($debugenabled) { print "Sending $channel_digit\n"; }
-        system ("irsend SEND_ONCE $remote_name $channel_digit");
+        system ("irsend SEND_ONCE $remote_name $key_prefix$channel_digit");
         sleep 1;
 }
