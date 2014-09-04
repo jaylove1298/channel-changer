@@ -42,7 +42,7 @@ for ($i = 0; $i < length($channel); $i++)
 # In the next command, check the /etc/lirc/lircd.conf file and confirm if
 # your remote definition file uses "select" or "enter" or "ENTER" or whatever.
 
-system ("irsend SEND_ONCE $remote_name select");
+#system ("irsend SEND_ONCE $remote_name select");
 
 sub change_channel {
         my($channel_digit) = @_;
