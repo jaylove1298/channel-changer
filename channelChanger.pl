@@ -47,6 +47,6 @@ for ($i = 0; $i < length($channel); $i++)
 sub change_channel {
         my($channel_digit) = @_;
         if ($debugenabled) { print "Sending $channel_digit\n"; }
-        system ("irsend SEND_ONCE $remote_name $key_prefix$channel_digit");
-        sleep 1;
+        system ("irsend SEND_ONCE $remote_name $key_prefix$channel_digit;sleep 1;");
+        #sleep 1;
 }
